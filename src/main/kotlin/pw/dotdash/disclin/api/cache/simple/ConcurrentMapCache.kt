@@ -1,8 +1,11 @@
-package pw.dotdash.disclin.api.cache
+package pw.dotdash.disclin.api.cache.simple
 
-class MapCache<K : Any, V : Any> : Cache<K, V> {
+import pw.dotdash.disclin.api.cache.Cache
+import java.util.concurrent.ConcurrentHashMap
 
-    private val map = mutableMapOf<K, V>()
+class ConcurrentMapCache<K : Any, V : Any> : Cache<K, V> {
+
+    private val map = ConcurrentHashMap<K, V>()
 
     override suspend fun get(key: K): V? = map[key]
 
@@ -20,5 +23,7 @@ class MapCache<K : Any, V : Any> : Cache<K, V> {
         for (key in keys) map.remove(key)
     }
 
-    override suspend fun invalidateAll() = map.clear()
+    override suspend fun invalidateAll() {
+        map.clear()
+    }
 }

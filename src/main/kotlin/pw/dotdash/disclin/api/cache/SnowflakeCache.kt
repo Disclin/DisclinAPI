@@ -1,5 +1,6 @@
 package pw.dotdash.disclin.api.cache
 
+import pw.dotdash.disclin.api.cache.simple.MapCache
 import pw.dotdash.disclin.api.entity.Snowflake
 
 typealias SnowflakeCache<V> = Cache<Snowflake, V>
