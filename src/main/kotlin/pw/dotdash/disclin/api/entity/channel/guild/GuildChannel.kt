@@ -1,6 +1,7 @@
-package pw.dotdash.disclin.api.entity.channel
+package pw.dotdash.disclin.api.entity.channel.guild
 
 import pw.dotdash.disclin.api.builder.InviteBuilder
+import pw.dotdash.disclin.api.entity.channel.Channel
 import pw.dotdash.disclin.api.entity.guild.Guild
 import pw.dotdash.disclin.api.entity.guild.Invite
 

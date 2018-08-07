@@ -1,4 +1,4 @@
-package pw.dotdash.disclin.api.entity.channel
+package pw.dotdash.disclin.api.entity.channel.guild
 
 import pw.dotdash.disclin.api.editor.GuildCategoryEditor
 

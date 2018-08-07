@@ -1,7 +1,8 @@
-package pw.dotdash.disclin.api.entity.channel
+package pw.dotdash.disclin.api.entity.channel.guild
 
 import pw.dotdash.disclin.api.editor.GuildTextChannelEditor
 import pw.dotdash.disclin.api.entity.Mentionable
+import pw.dotdash.disclin.api.entity.channel.TextChannel
 import pw.dotdash.disclin.api.entity.webhook.Webhook
 
 interface GuildTextChannel : Mentionable, GuildChannel, TextChannel {
