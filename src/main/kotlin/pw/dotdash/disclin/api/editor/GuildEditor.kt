@@ -1,7 +1,7 @@
 package pw.dotdash.disclin.api.editor
 
-import pw.dotdash.disclin.api.entity.channel.GuildTextChannel
-import pw.dotdash.disclin.api.entity.channel.GuildVoiceChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildTextChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildVoiceChannel
 import pw.dotdash.disclin.api.entity.guild.*
 
 interface GuildEditor {

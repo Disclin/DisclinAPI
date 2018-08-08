@@ -1,6 +1,6 @@
 package pw.dotdash.disclin.api.editor
 
-import pw.dotdash.disclin.api.entity.channel.Overwrite
+import pw.dotdash.disclin.api.entity.channel.guild.Overwrite
 
 interface GuildChannelEditor {
 
