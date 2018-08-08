@@ -4,9 +4,9 @@ import pw.dotdash.disclin.api.Disclin
 import pw.dotdash.disclin.api.builder.*
 import pw.dotdash.disclin.api.editor.GuildEditor
 import pw.dotdash.disclin.api.entity.Snowflake
-import pw.dotdash.disclin.api.entity.channel.GuildCategory
-import pw.dotdash.disclin.api.entity.channel.GuildTextChannel
-import pw.dotdash.disclin.api.entity.channel.GuildVoiceChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildCategory
+import pw.dotdash.disclin.api.entity.channel.guild.GuildTextChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildVoiceChannel
 import pw.dotdash.disclin.api.entity.message.Emoji
 import pw.dotdash.disclin.api.entity.user.User
 import pw.dotdash.disclin.api.entity.webhook.Webhook

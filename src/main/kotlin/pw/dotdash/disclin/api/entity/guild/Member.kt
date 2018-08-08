@@ -1,7 +1,7 @@
 package pw.dotdash.disclin.api.entity.guild
 
 import pw.dotdash.disclin.api.entity.Mentionable
-import pw.dotdash.disclin.api.entity.channel.GuildVoiceChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildVoiceChannel
 import pw.dotdash.disclin.api.entity.user.User
 import java.time.Instant
 

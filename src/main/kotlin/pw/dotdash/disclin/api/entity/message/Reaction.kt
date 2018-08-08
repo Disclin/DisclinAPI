@@ -2,9 +2,9 @@ package pw.dotdash.disclin.api.entity.message
 
 import pw.dotdash.disclin.api.entity.Entity
 import pw.dotdash.disclin.api.entity.Identifiable
-import pw.dotdash.disclin.api.entity.channel.DirectTextChannel
-import pw.dotdash.disclin.api.entity.channel.GuildTextChannel
 import pw.dotdash.disclin.api.entity.channel.TextChannel
+import pw.dotdash.disclin.api.entity.channel.direct.DirectTextChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildTextChannel
 import pw.dotdash.disclin.api.entity.guild.Guild
 import pw.dotdash.disclin.api.entity.user.User
 

@@ -1,7 +1,7 @@
 package pw.dotdash.disclin.api.entity.user
 
 import pw.dotdash.disclin.api.entity.Snowflake
-import pw.dotdash.disclin.api.entity.channel.DirectTextChannel
+import pw.dotdash.disclin.api.entity.channel.direct.DirectTextChannel
 import pw.dotdash.disclin.api.entity.guild.Guild
 
 interface SelfUser : User {

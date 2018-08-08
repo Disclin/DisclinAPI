@@ -2,7 +2,7 @@ package pw.dotdash.disclin.api.entity.user
 
 import pw.dotdash.disclin.api.entity.Identifiable
 import pw.dotdash.disclin.api.entity.Mentionable
-import pw.dotdash.disclin.api.entity.channel.DirectTextChannel
+import pw.dotdash.disclin.api.entity.channel.direct.DirectTextChannel
 import pw.dotdash.disclin.api.entity.message.MessageReceiver
 
 interface User : Identifiable, Mentionable, MessageReceiver {

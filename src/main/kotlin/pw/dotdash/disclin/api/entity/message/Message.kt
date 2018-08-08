@@ -3,10 +3,10 @@ package pw.dotdash.disclin.api.entity.message
 import pw.dotdash.disclin.api.entity.Identifiable
 import pw.dotdash.disclin.api.entity.Mentionable
 import pw.dotdash.disclin.api.entity.Snowflake
-import pw.dotdash.disclin.api.entity.channel.DirectTextChannel
-import pw.dotdash.disclin.api.entity.channel.GuildCategory
-import pw.dotdash.disclin.api.entity.channel.GuildTextChannel
 import pw.dotdash.disclin.api.entity.channel.TextChannel
+import pw.dotdash.disclin.api.entity.channel.direct.DirectTextChannel
+import pw.dotdash.disclin.api.entity.channel.guild.GuildCategory
+import pw.dotdash.disclin.api.entity.channel.guild.GuildTextChannel
 import pw.dotdash.disclin.api.entity.guild.Guild
 import pw.dotdash.disclin.api.entity.guild.Invite
 import pw.dotdash.disclin.api.entity.guild.Member

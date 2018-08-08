@@ -1,6 +1,6 @@
 package pw.dotdash.disclin.api.builder
 
-import pw.dotdash.disclin.api.entity.channel.GuildCategory
+import pw.dotdash.disclin.api.entity.channel.guild.GuildCategory
 import pw.dotdash.disclin.api.entity.guild.Permission
 import pw.dotdash.disclin.api.entity.guild.Subject
 
