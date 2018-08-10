@@ -43,12 +43,12 @@ interface Disclin {
     /**
      * Lists all [users][User] known to this bot.
      */
-    suspend fun listUsers(): List<User> = userCache.getValues().toList()
+    suspend fun listUsers(): Collection<User> = userCache.getValues().toList()
 
     /**
-     * Lists all [users][User] known to this bot, filtering by [filter].
+     * Lists all [users][User] known to this bot, filtering by [selecting].
      */
-    suspend fun listUsers(filter: (User) -> Boolean): List<User> = listUsers().filter(filter)
+    suspend fun listUsers(selecting: (User) -> Boolean): Collection<User> = listUsers().filter(selecting)
 
     /**
      * Gets a [User] by its [id].
@@ -65,17 +65,17 @@ interface Disclin {
     /**
      * Lists all [guilds][Guild] known to this bot.
      */
-    suspend fun listGuilds(): List<Guild> = guildCache.getValues().toList()
+    suspend fun listGuilds(): Collection<Guild> = guildCache.getValues().toList()
 
     /**
-     * Lists all [guilds][Guild] known to this bot, filtering by [filter].
+     * Lists all [guilds][Guild] known to this bot, filtering by [selecting].
      */
-    suspend fun listGuilds(filter: (Guild) -> Boolean): List<Guild> = listGuilds().filter(filter)
+    suspend fun listGuilds(selecting: (Guild) -> Boolean): Collection<Guild> = listGuilds().filter(selecting)
 
     /**
      * Lists all [mutual guilds][Guild] shared by this bot and the provided [users].
      */
-    suspend fun listMutualGuilds(vararg users: Array<User>): List<Guild>
+    suspend fun listMutualGuilds(vararg users: Array<User>): Collection<Guild>
 
     /**
      * Gets a [Guild] by its [id].
@@ -85,12 +85,12 @@ interface Disclin {
     /**
      * Lists all [roles][Role] known to this bot.
      */
-    suspend fun listRoles(): List<Role>
+    suspend fun listRoles(): Collection<Role>
 
     /**
-     * Lists all [roles][Role] known to this bot, filtering by [filter].
+     * Lists all [roles][Role] known to this bot, filtering by [selecting].
      */
-    suspend fun listRoles(filter: (Role) -> Boolean): List<Role> = listRoles().filter(filter)
+    suspend fun listRoles(selecting: (Role) -> Boolean): Collection<Role> = listRoles().filter(selecting)
 
     /**
      * Gets a [Role] by its [id].
@@ -100,12 +100,12 @@ interface Disclin {
     /**
      * Lists all [categories][GuildCategory] known to this bot.
      */
-    suspend fun listCategories(): List<GuildCategory> = categoryCache.getValues().toList()
+    suspend fun listCategories(): Collection<GuildCategory> = categoryCache.getValues().toList()
 
     /**
-     * Lists all [categories][GuildCategory] known to this bot, filtering by [filter].
+     * Lists all [categories][GuildCategory] known to this bot, filtering by [selecting].
      */
-    suspend fun listCategories(filter: (GuildCategory) -> Boolean): List<GuildCategory> = listCategories().filter(filter)
+    suspend fun listCategories(selecting: (GuildCategory) -> Boolean): Collection<GuildCategory> = listCategories().filter(selecting)
 
     /**
      * Gets a [GuildCategory] by its [id].
@@ -115,12 +115,12 @@ interface Disclin {
     /**
      * Lists all [guild text channels][GuildTextChannel] known to this bot.
      */
-    suspend fun listGuildTextChannels(): List<GuildTextChannel> = guildTextChannelCache.getValues().toList()
+    suspend fun listGuildTextChannels(): Collection<GuildTextChannel> = guildTextChannelCache.getValues().toList()
 
     /**
-     * Lists all [guild text channels][GuildTextChannel] known to this bot, filtering by [filter].
+     * Lists all [guild text channels][GuildTextChannel] known to this bot, filtering by [selecting].
      */
-    suspend fun listGuildTextChannels(filter: (GuildTextChannel) -> Boolean): List<GuildTextChannel> = listGuildTextChannels().filter(filter)
+    suspend fun listGuildTextChannels(selecting: (GuildTextChannel) -> Boolean): Collection<GuildTextChannel> = listGuildTextChannels().filter(selecting)
 
     /**
      * Gets a [GuildTextChannel] by its [id].
@@ -130,12 +130,12 @@ interface Disclin {
     /**
      * Lists all [guild voice channels][GuildVoiceChannel] known to this bot.
      */
-    suspend fun listGuildVoiceChannels(): List<GuildVoiceChannel> = guildVoiceChannelCache.getValues().toList()
+    suspend fun listGuildVoiceChannels(): Collection<GuildVoiceChannel> = guildVoiceChannelCache.getValues().toList()
 
     /**
-     * Lists all [guild voice channels][GuildVoiceChannel] known to this bot, filtering by [filter].
+     * Lists all [guild voice channels][GuildVoiceChannel] known to this bot, filtering by [selecting].
      */
-    suspend fun listGuildVoiceChannels(filter: (GuildVoiceChannel) -> Boolean): List<GuildVoiceChannel> = listGuildVoiceChannels().filter(filter)
+    suspend fun listGuildVoiceChannels(selecting: (GuildVoiceChannel) -> Boolean): Collection<GuildVoiceChannel> = listGuildVoiceChannels().filter(selecting)
 
     /**
      * Gets a [GuildVoiceChannel] by its [id].
@@ -145,12 +145,12 @@ interface Disclin {
     /**
      * Lists all [direct text channels][DirectTextChannel] known to this bot.
      */
-    suspend fun listDirectTextChannels(): List<DirectTextChannel> = directTextChannelCache.getValues().toList()
+    suspend fun listDirectTextChannels(): Collection<DirectTextChannel> = directTextChannelCache.getValues().toList()
 
     /**
-     * Lists all [direct text channels][DirectTextChannel] known to this bot, filtering by [filter].
+     * Lists all [direct text channels][DirectTextChannel] known to this bot, filtering by [selecting].
      */
-    suspend fun listDirectTextChannels(filter: (DirectTextChannel) -> Boolean): List<DirectTextChannel> = listDirectTextChannels().filter(filter)
+    suspend fun listDirectTextChannels(selecting: (DirectTextChannel) -> Boolean): Collection<DirectTextChannel> = listDirectTextChannels().filter(selecting)
 
     /**
      * Gets a [DirectTextChannel] by its [id].
@@ -160,12 +160,12 @@ interface Disclin {
     /**
      * Lists all [emojis][Emoji] known to this bot.
      */
-    suspend fun listEmojis(): List<Emoji>
+    suspend fun listEmojis(): Collection<Emoji>
 
     /**
-     * Lists all [emojis][Emoji] known to this bot, filtering by [filter].
+     * Lists all [emojis][Emoji] known to this bot, filtering by [selecting].
      */
-    suspend fun listEmojis(filter: (Emoji) -> Boolean): List<Emoji> = listEmojis().filter(filter)
+    suspend fun listEmojis(selecting: (Emoji) -> Boolean): Collection<Emoji> = listEmojis().filter(selecting)
 
     /**
      * Gets an [Emoji] by its [id].
@@ -175,7 +175,7 @@ interface Disclin {
     /**
      * Gets an [Invite] by its [code].
      */
-    suspend fun getInvite(code: String): Invite
+    suspend fun getInvite(code: String): Invite?
 
     /**
      * Deletes an [Invite] by its [code].
@@ -185,7 +185,7 @@ interface Disclin {
     /**
      * Gets a [Webhook] by its [id].
      */
-    suspend fun getWebhook(id: Snowflake): Webhook
+    suspend fun getWebhook(id: Snowflake): Webhook?
 
     /**
      * Deletes a [Webhook] by its [id].
