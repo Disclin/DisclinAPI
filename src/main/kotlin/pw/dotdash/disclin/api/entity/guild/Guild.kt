@@ -1,10 +1,12 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package pw.dotdash.disclin.api.entity.guild
 
-import pw.dotdash.disclin.api.Disclin
 import pw.dotdash.disclin.api.builder.*
 import pw.dotdash.disclin.api.editor.GuildEditor
 import pw.dotdash.disclin.api.entity.Snowflake
 import pw.dotdash.disclin.api.entity.channel.guild.GuildCategory
+import pw.dotdash.disclin.api.entity.channel.guild.GuildChannel
 import pw.dotdash.disclin.api.entity.channel.guild.GuildTextChannel
 import pw.dotdash.disclin.api.entity.channel.guild.GuildVoiceChannel
 import pw.dotdash.disclin.api.entity.message.Emoji
@@ -67,63 +69,67 @@ interface Guild : Guildlike {
 
     suspend fun pruneMembers(days: Int, reason: String? = null): Int
 
-    suspend fun listMembers(): List<Member>
+    suspend fun listMembers(): Collection<Member>
 
-    suspend fun listMembersWithName(name: String, ignoreCase: Boolean = false): List<Member>
+    suspend fun listMembers(selecting: (Member) -> Boolean): Collection<Member> = listMembers().filter(selecting)
 
     suspend fun getMember(user: User): Member?
 
-    suspend fun getMemberById(id: Snowflake): Member?
+    suspend fun getMember(id: Snowflake): Member?
 
     suspend fun isMember(user: User): Boolean
 
     suspend fun createCategory(init: GuildCategoryBuilder.() -> Unit): GuildCategory
 
-    suspend fun listCategories(): List<GuildCategory>
+    suspend fun listCategories(): Collection<GuildCategory>
 
-    suspend fun listCategoriesWithName(name: String, ignoreCase: Boolean = false): List<GuildCategory>
+    suspend fun listCategories(selecting: (GuildCategory) -> Boolean): Collection<GuildCategory> = listCategories().filter(selecting)
 
-    suspend fun getCategoryById(id: Snowflake): GuildCategory?
+    suspend fun getCategory(id: Snowflake): GuildCategory?
 
     suspend fun createTextChannel(init: GuildTextChannelBuilder.() -> Unit): GuildTextChannel
 
-    suspend fun listTextChannels(): List<GuildTextChannel>
+    suspend fun listTextChannels(): Collection<GuildTextChannel>
 
-    suspend fun listTextChannelsWithName(name: String, ignoreCase: Boolean = false): List<GuildTextChannel>
+    suspend fun listTextChannels(selecting: (GuildTextChannel) -> Boolean): Collection<GuildTextChannel> = listTextChannels().filter(selecting)
 
-    suspend fun getTextChannelById(id: Snowflake): GuildTextChannel?
+    suspend fun getTextChannel(id: Snowflake): GuildTextChannel?
 
     suspend fun createVoiceChannel(init: GuildVoiceChannelBuilder.() -> Unit): GuildVoiceChannel
 
-    suspend fun listVoiceChannels(): List<GuildVoiceChannel>
+    suspend fun listVoiceChannels(): Collection<GuildVoiceChannel>
 
-    suspend fun listVoiceChannelsWithName(name: String, ignoreCase: Boolean = false): List<GuildVoiceChannel>
+    suspend fun listVoiceChannels(selecting: (GuildVoiceChannel) -> Boolean): Collection<GuildVoiceChannel> = listVoiceChannels().filter(selecting)
 
-    suspend fun getVoiceChannelById(id: Snowflake): GuildVoiceChannel?
+    suspend fun getVoiceChannel(id: Snowflake): GuildVoiceChannel?
 
     suspend fun createRole(init: RoleBuilder.() -> Unit): Role
 
-    suspend fun listRoles(): List<Role>
+    suspend fun listRoles(): Collection<Role>
 
-    suspend fun listRolesWithName(name: String, ignoreCase: Boolean = false): List<Role>
+    suspend fun listRoles(selecting: (Role) -> Boolean): Collection<Role> = listRoles().filter(selecting)
 
-    suspend fun getRoleById(id: Snowflake): Role?
+    suspend fun getEveryoneRole(): Role = getRole(this.id)!!
+
+    suspend fun getRole(id: Snowflake): Role?
 
     suspend fun createEmoji(init: suspend EmojiBuilder.() -> Unit): Emoji
 
-    suspend fun listEmojis(): List<Emoji>
+    suspend fun listEmojis(): Collection<Emoji>
 
-    suspend fun listEmojisWithName(name: String, ignoreCase: Boolean = false): List<Emoji>
+    suspend fun listEmojis(selecting: (Emoji) -> Boolean): Collection<Emoji> = listEmojis().filter(selecting)
 
-    suspend fun getEmojiById(id: Snowflake): Emoji?
+    suspend fun getEmoji(id: Snowflake): Emoji?
 
-    suspend fun listBans(): List<Ban>
+    suspend fun listBans(): Collection<Ban>
 
-    suspend fun listInvites(): List<Invite>
+    suspend fun getBan(user: User): Ban?
 
-    suspend fun listWebhooks(): List<Webhook>
+    suspend fun listInvites(): Collection<Invite>
 
-    suspend fun getEveryoneRole(): Role = getRoleById(this.id)!!
+    suspend fun getInvite(code: String): Invite?
+
+    suspend fun listWebhooks(): Collection<Webhook>
 
     suspend fun edit(fn: GuildEditor.() -> Unit)
 
@@ -136,4 +142,6 @@ interface Guild : Guildlike {
     operator fun contains(user: User): Boolean
 }
 
-suspend operator fun Guild.Companion.invoke(disclin: Disclin, name: String): Guild = TODO()
+inline operator fun Guild.contains(channel: GuildChannel): Boolean = channel.guild == this
+
+inline operator fun Guild.contains(role: Role): Boolean = role.guild == this
