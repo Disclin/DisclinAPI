@@ -4,9 +4,9 @@ import pw.dotdash.disclin.api.entity.Identifiable
 
 interface Subject : Identifiable, GuildEntity {
 
-    operator fun plusAssign(permission: Permission)
+    suspend operator fun plus(permission: Permission): Subject
 
-    operator fun remAssign(permission: Permission)
+    suspend operator fun minus(permission: Permission): Subject
 
     operator fun contains(permission: Permission): Boolean
 

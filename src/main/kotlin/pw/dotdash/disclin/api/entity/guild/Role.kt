@@ -29,4 +29,12 @@ interface Role : Subject, Mentionable {
     suspend fun edit(init: suspend RoleEditor.() -> Unit): Role
 
     suspend fun delete()
+
+    override suspend fun plus(permission: Permission): Role = edit {
+        +permission
+    }
+
+    override suspend fun minus(permission: Permission): Role = edit {
+        -permission
+    }
 }
